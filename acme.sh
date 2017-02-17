@@ -6,7 +6,7 @@ PROJECT_NAME="acme.sh"
 
 PROJECT_ENTRY="acme.sh"
 
-PROJECT="https://github.com/Neilpang/$PROJECT_NAME"
+PROJECT="https://github.com/miloshdrown/$PROJECT_NAME"
 
 DEFAULT_INSTALL_HOME="$HOME/.$PROJECT_NAME"
 _SCRIPT_="$0"
@@ -3398,6 +3398,10 @@ issue() {
           if [ "$vtype" = "$VTYPE_HTTP" ]; then
             _debug "Debug: get token url."
             _get "http://$d/.well-known/acme-challenge/$token" "" 1
+          fi
+          if [ "$vtype" = "$VTYPE_TLS" ]; then
+            _debug "Debug: get token url."
+            _get "https://$d/.well-known/acme-challenge/$token" "" 1
           fi
         fi
         _clearupwebbroot "$_currentRoot" "$removelevel" "$token"
